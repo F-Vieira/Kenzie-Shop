@@ -3,16 +3,21 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
   :root{
     --blue: #1d2c5a;
-    --dark_blue: #0c1839;
-    --light_blue: #6ba7db;
+    --dark-blue: #0c1839;
+    --light-blue: #6ba7db;
+    --snow-blue: #a6c6e1;
     
-    --font_title: 'Great Vibes', cursive;
-    --font_text: 'Comfortaa', cursive;
+    --font-title: 'Great Vibes', cursive;
+    --font-text: 'Comfortaa', cursive;
   }
   *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  body{
+    font-family: var(--font-text);
   }
 
   button{

@@ -11,14 +11,14 @@ export const HeaderContainer = styled.header`
   padding: 0 20px 0 10px;
 
   .header_logo {
-    font-family: var(--font_title);
+    font-family: var(--font-title);
     font-weight: 300;
     font-size: 1.5rem;
     letter-spacing: 3px;
   }
 
   a {
-    color: var(--light_blue);
+    color: var(--light-blue);
   }
 
   @media screen and (min-width: 768px) {
@@ -37,7 +37,6 @@ export const Navigator = styled.nav`
     justify-content: space-around;
     li {
       a {
-        font-family: var(--font_text);
         font-size: 0.8rem;
         svg {
           margin-right: 5px;
