@@ -11,7 +11,6 @@ export const ButtonContainer = styled.button`
 
   padding: 10px 20px;
 
-  max-width: 150px;
   max-height: 40px;
   border-radius: 15px;
   border: 2px solid transparent;
