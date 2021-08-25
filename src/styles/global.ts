@@ -7,7 +7,8 @@ export default createGlobalStyle`
     --light-blue: #6ba7db;
     --snow-blue: #a6c6e1;
     --marine-blue: #25c3bc;
-    
+    --white: #f9f1f9;
+
     --font-title: 'Great Vibes', cursive;
     --font-text: 'Comfortaa', cursive;
   }
@@ -15,6 +16,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
   }
 
   body{
@@ -26,7 +28,6 @@ export default createGlobalStyle`
   } 
 
   input, button {
-    outline: none;
     border: none;
   }
 

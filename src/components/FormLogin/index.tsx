@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../Input";
 import { FormLoginContainer } from "./styles";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const FormLogin = () => {
   const schema = yup.object().shape({
@@ -33,6 +34,9 @@ const FormLogin = () => {
       <Input {...register("email")} placeholder="E-mail" />
       <Input {...register("password")} placeholder="Senha" type="password" />
       <Button type="submit">Login</Button>
+      <p>
+        É novo? <Link to="/signup">Cadastre-se</Link>
+      </p>
     </FormLoginContainer>
   );
 };

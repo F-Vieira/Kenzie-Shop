@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const FormLoginContainer = styled.form`
+export const FormSignupContainer = styled.form`
   width: 300px;
-  height: 280px;
-
+  height: 350px;
   padding: 20px;
 
   background-color: var(--snow-blue);
