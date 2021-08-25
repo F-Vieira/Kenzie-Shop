@@ -6,6 +6,7 @@ export default createGlobalStyle`
     --dark-blue: #0c1839;
     --light-blue: #6ba7db;
     --snow-blue: #a6c6e1;
+    --marine-blue: #25c3bc;
     
     --font-title: 'Great Vibes', cursive;
     --font-text: 'Comfortaa', cursive;
@@ -22,6 +23,11 @@ export default createGlobalStyle`
 
   button{
     cursor: pointer;
+  } 
+
+  input, button {
+    outline: none;
+    border: none;
   }
 
   li{

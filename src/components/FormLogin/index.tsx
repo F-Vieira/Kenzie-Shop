@@ -1,7 +1,9 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ContainerFormLogin } from "./styles";
+
+import Input from "../Input";
+import { FormLoginContainer } from "./styles";
 
 const FormLogin = () => {
   const schema = yup.object().shape({
@@ -25,12 +27,12 @@ const FormLogin = () => {
   };
 
   return (
-    <ContainerFormLogin onSubmit={handleSubmit(submitLogin)}>
+    <FormLoginContainer onSubmit={handleSubmit(submitLogin)}>
       <h2>Login</h2>
-      <input {...register("email")} placeholder="E-mail" />
-      <input {...register("password")} placeholder="Senha" type="password" />
+      <Input {...register("email")} placeholder="E-mail" />
+      <Input {...register("password")} placeholder="Senha" type="password" />
       <button type="submit">Entrar</button>
-    </ContainerFormLogin>
+    </FormLoginContainer>
   );
 };
 
