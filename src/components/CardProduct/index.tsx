@@ -1,26 +1,30 @@
-import { useProducts } from "../../providers/Products";
-import Button from "../Button";
-import { CardProductContainer, ProductImage } from "./styles";
-import { BsInfoCircle, BsPlusCircle } from "react-icons/bs";
 import { useState } from "react";
-const CardProduct = () => {
-  const { products } = useProducts();
+import { BsInfoCircle, BsPlusCircle } from "react-icons/bs";
+
+import Button from "../Button";
+import { IProduct } from "../../types/products";
+
+import { CardProductContainer, ProductImage } from "./styles";
+
+const CardProduct = ({ product }: any) => {
+  const { image_url, name, description, price } = product;
+
   const [showDescription, setShowDescription] = useState<boolean>(false);
 
   return (
     <CardProductContainer show={showDescription}>
-      <ProductImage src={products[0]?.image_url} alt={products[0]?.name} />
+      <ProductImage src={image_url} alt={name} />
 
-      <h3 className="product-name">{products[0]?.name}</h3>
+      <h3 className="product-name">{name}</h3>
       <p className="product-description">
         <BsInfoCircle
           onMouseEnter={() => setShowDescription(true)}
           onMouseLeave={() => setShowDescription(false)}
         />
-        <span>{products[0]?.description}</span>
+        <span>{description}</span>
       </p>
 
-      <p className="product-price">{products[0]?.price}</p>
+      <p className="product-price">{price}</p>
 
       <Button type="button">
         <BsPlusCircle /> Carrinho

@@ -5,15 +5,10 @@ import {
   useContext,
   ReactNode,
 } from "react";
+
 import api from "../../services/api";
 
-interface IProduct {
-  id: number;
-  name: string;
-  image_url: string;
-  price: number;
-  description: string;
-}
+import { IProduct } from "../../types/products";
 
 interface IProductsProviderProps {
   children: ReactNode;

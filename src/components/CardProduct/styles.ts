@@ -6,12 +6,22 @@ interface ICardProductStyledProps {
 
 export const CardProductContainer = styled.div<ICardProductStyledProps>`
   width: 250px;
-  border: 4px groove var(--light-blue);
+
   border-radius: 30px;
-  box-shadow: 0px 0px 20px 5px #0c1839;
-  padding: 15px;
+  border: 4px groove var(--light-blue);
+  background-color: #fff;
   color: var(--dark-blue);
+  box-shadow: 0px 0px 20px 5px #0c1839;
+
+  padding: 15px;
   text-align: center;
+
+  margin: 20px 10px;
+
+  .product-name {
+    min-height: 40px;
+    max-height: 40px;
+  }
 
   .product-description {
     margin-top: 15px;
@@ -34,6 +44,7 @@ export const CardProductContainer = styled.div<ICardProductStyledProps>`
     }
     svg {
       color: var(--marine-blue);
+      cursor: pointer;
     }
   }
 
