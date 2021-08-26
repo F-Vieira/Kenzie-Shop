@@ -6,6 +6,8 @@ import Input from "../Input";
 import { FormLoginContainer } from "./styles";
 import Button from "../Button";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../providers/Auth";
+import { ILogin } from "../../types/login";
 
 const FormLogin = () => {
   const schema = yup.object().shape({
@@ -20,13 +22,11 @@ const FormLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ILogin>({
     resolver: yupResolver(schema),
   });
 
-  const submitLogin = (data: any) => {
-    console.log(data);
-  };
+  const { submitLogin } = useAuth();
 
   return (
     <FormLoginContainer onSubmit={handleSubmit(submitLogin)}>
