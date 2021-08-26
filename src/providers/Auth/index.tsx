@@ -1,38 +1,47 @@
 import { createContext, useState, useContext, ReactNode } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { ILogin } from "../../types/login";
 import { ISignup } from "../../types/signup";
-
+import { History } from "history";
+import { useEffect } from "react";
 interface IAuthProviderProps {
   children: ReactNode;
 }
 
 interface IAuthProviderData {
-  auth: string;
-  submitLogin: (data: ILogin) => void;
+  token: string;
+  auth: boolean;
+  submitLogin: (data: ILogin, history: History) => void;
   submitSignup: (data: ISignup) => void;
+  handleLogout: () => void;
 }
 
 const AuthContext = createContext<IAuthProviderData>({} as IAuthProviderData);
 
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [auth, setAuth] = useState(
+  const [auth, setAuth] = useState(false);
+  const [token, setToken] = useState(
     localStorage.getItem("@kenzieShop: token") || ""
   );
-  const history = useHistory();
 
-  const submitLogin = (data: ILogin) => {
+  useEffect(() => {
+    if (token) {
+      return setAuth(true);
+    }
+  }, [token]);
+
+  const submitLogin = (data: ILogin, history: History) => {
     api
       .post("/login", data)
       .then((resp) => {
-        setAuth(resp.data.accessToken);
+        setToken(resp.data.accessToken);
+
         localStorage.setItem("@kenzieShop: token", resp.data.accessToken);
 
-        console.log(resp);
         toast.info("Seja Bem Vindo!");
-        history.push("/dashboard");
+        return history.push("/dashboard");
       })
       .catch(() => toast.error("email ou senha incorreto! 😕😕"));
   };
@@ -46,8 +55,15 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       .catch(() => toast.error("Erro ao cadastrar 😥😥"));
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    setAuth(false);
+  };
+
   return (
-    <AuthContext.Provider value={{ auth, submitLogin, submitSignup }}>
+    <AuthContext.Provider
+      value={{ auth, token, submitSignup, submitLogin, handleLogout }}
+    >
       {children}
     </AuthContext.Provider>
   );

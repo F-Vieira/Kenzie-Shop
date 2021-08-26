@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { ImEnter, ImCart } from "react-icons/im";
+import { ImEnter, ImCart, ImExit } from "react-icons/im";
 import { HeaderContainer, Navigator } from "./styles";
+import { useAuth } from "../../providers/Auth";
 
 const Header = () => {
+  const { auth, handleLogout } = useAuth();
+
   return (
     <HeaderContainer>
       <h1 className="header_logo">
@@ -17,9 +20,18 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/login">
-              <ImEnter />
-              Entrar
+            <Link to="/login" onClick={handleLogout}>
+              {auth ? (
+                <>
+                  <ImExit />
+                  Sair
+                </>
+              ) : (
+                <>
+                  <ImEnter />
+                  Entrar
+                </>
+              )}
             </Link>
           </li>
         </ul>

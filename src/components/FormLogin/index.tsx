@@ -1,13 +1,15 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 import Input from "../Input";
-import { FormLoginContainer } from "./styles";
 import Button from "../Button";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../providers/Auth";
+
 import { ILogin } from "../../types/login";
+import { useAuth } from "../../providers/Auth";
+
+import { FormLoginContainer } from "./styles";
 
 const FormLogin = () => {
   const schema = yup.object().shape({
@@ -26,10 +28,15 @@ const FormLogin = () => {
     resolver: yupResolver(schema),
   });
 
+  const history = useHistory();
   const { submitLogin } = useAuth();
 
+  const handleLogin = (data: ILogin) => {
+    submitLogin(data, history);
+  };
+
   return (
-    <FormLoginContainer onSubmit={handleSubmit(submitLogin)}>
+    <FormLoginContainer onSubmit={handleSubmit(handleLogin)}>
       <h2>Login</h2>
       <Input {...register("email")} placeholder="E-mail" />
       <Input {...register("password")} placeholder="Senha" type="password" />

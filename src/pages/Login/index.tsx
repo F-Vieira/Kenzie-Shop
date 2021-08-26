@@ -5,8 +5,8 @@ import { useAuth } from "../../providers/Auth";
 const Login = () => {
   const { auth } = useAuth();
 
-  if (auth !== "") {
-    <Redirect to="/dashboard" />;
+  if (auth) {
+    return <Redirect to="/dashboard" />;
   }
 
   return (

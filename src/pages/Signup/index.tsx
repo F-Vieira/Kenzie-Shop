@@ -6,7 +6,7 @@ const Signup = () => {
   const { auth } = useAuth();
 
   if (auth) {
-    <Redirect to="/dashboard" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

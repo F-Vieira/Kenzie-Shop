@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { BsInfoCircle, BsPlusCircle } from "react-icons/bs";
+import { BsInfoCircle, BsPlusCircle, BsTrashFill } from "react-icons/bs";
 
 import Button from "../Button";
 import { IProduct } from "../../types/products";
 
 import { CardProductContainer, ProductImage } from "./styles";
+import { useProducts } from "../../providers/Products";
 
-const CardProduct = ({ product }: any) => {
+interface ICardProps {
+  product: IProduct;
+  inCart?: boolean;
+}
+
+const CardProduct = ({ product, inCart = false }: ICardProps) => {
   const { image_url, name, description, price } = product;
+  const { addToCart, removeFromCart } = useProducts();
 
   const [showDescription, setShowDescription] = useState<boolean>(false);
 
@@ -26,9 +33,15 @@ const CardProduct = ({ product }: any) => {
 
       <p className="product-price">{price}</p>
 
-      <Button type="button">
-        <BsPlusCircle /> Carrinho
-      </Button>
+      {inCart ? (
+        <Button type="button" onClick={() => removeFromCart(product)}>
+          <BsTrashFill /> Remover
+        </Button>
+      ) : (
+        <Button type="button" onClick={() => addToCart(product)}>
+          <BsPlusCircle /> Carrinho
+        </Button>
+      )}
     </CardProductContainer>
   );
 };
