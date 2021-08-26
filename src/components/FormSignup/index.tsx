@@ -11,7 +11,10 @@ import { ISignup } from "../../types/signup";
 
 const FormSignup = () => {
   const schema = yup.object().shape({
-    username: yup.string().required("Campo Obrigatório"),
+    username: yup
+      .string()
+      .required("Campo Obrigatório")
+      .min(3, "Minimo 3 letras"),
     email: yup.string().email("E-mail Inválido").required("Campo Obrigatório"),
     password: yup
       .string()
@@ -32,9 +35,28 @@ const FormSignup = () => {
   return (
     <FormSignupContainer onSubmit={handleSubmit(submitSignup)}>
       <h2>Cadastro</h2>
-      <Input {...register("username")} placeholder="Nome de Usuário" />
-      <Input {...register("email")} placeholder="Seu melhor E-mail" />
-      <Input {...register("password")} placeholder="Senha" type="password" />
+      <div>
+        <Input {...register("username")} placeholder="Nome de Usuário" />
+        {errors.username && (
+          <p className="form-error error--username">
+            {errors.username?.message}
+          </p>
+        )}
+      </div>
+      <div>
+        <Input {...register("email")} placeholder="Seu melhor E-mail" />
+        {errors.email && (
+          <p className="form-error error--email">{errors.email?.message}</p>
+        )}
+      </div>
+      <div>
+        <Input {...register("password")} placeholder="Senha" type="password" />
+        {errors.password && (
+          <p className="form-error error--password">
+            {errors.password?.message}
+          </p>
+        )}
+      </div>
       <Button type="submit">Cadastrar</Button>
       <p>
         Já possui conta? Faça <Link to="/login">Login</Link>

@@ -38,8 +38,20 @@ const FormLogin = () => {
   return (
     <FormLoginContainer onSubmit={handleSubmit(handleLogin)}>
       <h2>Login</h2>
-      <Input {...register("email")} placeholder="E-mail" />
-      <Input {...register("password")} placeholder="Senha" type="password" />
+      <div>
+        <Input {...register("email")} placeholder="E-mail" />
+        {errors.email && (
+          <p className="form-error error--email">{errors.email?.message}</p>
+        )}
+      </div>
+      <div>
+        <Input {...register("password")} placeholder="Senha" type="password" />
+        {errors.password && (
+          <p className="form-error error--password">
+            {errors.password?.message}
+          </p>
+        )}
+      </div>
       <Button type="submit">Login</Button>
       <p>
         É novo? <Link to="/signup">Cadastre-se</Link>

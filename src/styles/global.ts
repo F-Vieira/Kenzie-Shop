@@ -8,6 +8,7 @@ export default createGlobalStyle`
     --snow-blue: #a6c6e1;
     --marine-blue: #25c3bc;
     --white: #f9f1f9;
+    --red: #811717;
 
     --font-title: 'Great Vibes', cursive;
     --font-text: 'Comfortaa', cursive;
