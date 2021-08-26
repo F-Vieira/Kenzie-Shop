@@ -6,7 +6,7 @@ const Login = () => {
   const { auth } = useAuth();
 
   if (auth) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/cart" />;
   }
 
   return (

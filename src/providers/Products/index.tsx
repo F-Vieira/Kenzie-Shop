@@ -20,6 +20,7 @@ interface IProductsProviderData {
   cart: IProduct[];
   addToCart: (product: IProduct) => void;
   removeFromCart: (product: IProduct) => void;
+  finishCart: () => void;
 }
 
 const ProductsContext = createContext<IProductsProviderData>(
@@ -46,8 +47,9 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
     if (!inCart) {
       cart.push(product);
       localStorage.setItem("@kenzieShop: cart", JSON.stringify(cart));
+      toast.success("Produto adicionado ao carrinho");
     } else {
-      toast.warning("Itam já adicionado!");
+      toast.warning("Produto já adicionado!");
     }
   };
 
@@ -57,9 +59,14 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
     setCart(newCart);
   };
 
+  const finishCart = () => {
+    setCart([]);
+    localStorage.setItem("@kenzieShop: cart", JSON.stringify([]));
+  };
+
   return (
     <ProductsContext.Provider
-      value={{ products, cart, addToCart, removeFromCart }}
+      value={{ products, cart, addToCart, removeFromCart, finishCart }}
     >
       {children}
     </ProductsContext.Provider>

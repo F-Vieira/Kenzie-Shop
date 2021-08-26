@@ -1,5 +1,4 @@
 import { createContext, useState, useContext, ReactNode } from "react";
-import { Redirect, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { ILogin } from "../../types/login";
@@ -41,7 +40,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         localStorage.setItem("@kenzieShop: token", resp.data.accessToken);
 
         toast.info("Seja Bem Vindo!");
-        return history.push("/dashboard");
+        return history.push("/cart");
       })
       .catch(() => toast.error("email ou senha incorreto! 😕😕"));
   };

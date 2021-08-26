@@ -6,7 +6,8 @@ interface ICardProductStyledProps {
 
 export const CardProductContainer = styled.div<ICardProductStyledProps>`
   width: 250px;
-
+  max-width: 250px;
+  max-height: 615px;
   border-radius: 30px;
   border: 4px groove var(--light-blue);
   background-color: #fff;

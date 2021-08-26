@@ -27,7 +27,7 @@ const FormSignup = () => {
     resolver: yupResolver(schema),
   });
 
-  const { auth, submitSignup } = useAuth();
+  const { submitSignup } = useAuth();
 
   return (
     <FormSignupContainer onSubmit={handleSubmit(submitSignup)}>

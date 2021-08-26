@@ -16,7 +16,30 @@ export const HeaderContainer = styled.header`
     font-size: 1.5rem;
     letter-spacing: 3px;
   }
+  .header-cart-amount {
+    background-color: var(--white);
+    color: var(--dark-blue);
 
+    position: absolute;
+    top: 14px;
+    right: 100px;
+
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: bolder;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+      top: 35px;
+      right: 200px;
+    }
+  }
   a {
     color: var(--light-blue);
   }
