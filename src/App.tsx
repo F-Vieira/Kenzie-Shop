@@ -4,6 +4,7 @@ import Routes from "./routes";
 import GlogalStyle from "./styles/global";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, Zoom } from "react-toastify";
+import ScrollButton from "./components/ScrollButton";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
       <GlogalStyle />
       <Header />
       <Routes />
+      <ScrollButton />
     </>
   );
 };
