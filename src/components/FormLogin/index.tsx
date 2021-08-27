@@ -29,14 +29,14 @@ const FormLogin = () => {
   });
 
   const history = useHistory();
-  const { submitLogin } = useAuth();
+  const { handleLogin } = useAuth();
 
-  const handleLogin = (data: ILogin) => {
-    submitLogin(data, history);
+  const submitLogin = (data: ILogin) => {
+    handleLogin(data, history);
   };
 
   return (
-    <FormLoginContainer onSubmit={handleSubmit(handleLogin)}>
+    <FormLoginContainer onSubmit={handleSubmit(submitLogin)}>
       <h2>Login</h2>
       <div>
         <Input {...register("email")} placeholder="E-mail" />

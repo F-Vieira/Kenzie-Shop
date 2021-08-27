@@ -4,22 +4,26 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 
+import { AnimatePresence } from "framer-motion";
+
 const Routes = () => {
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/signup">
-        <Signup />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/cart">
-        <Cart />
-      </Route>
-    </Switch>
+    <AnimatePresence>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+      </Switch>
+    </AnimatePresence>
   );
 };
 

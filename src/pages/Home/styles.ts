@@ -6,4 +6,6 @@ export const HomeContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
+  padding-bottom: 5rem;
 `;

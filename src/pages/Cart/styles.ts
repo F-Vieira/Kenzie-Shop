@@ -8,6 +8,8 @@ export const CartContainer = styled.main`
   grid-template-columns: 1fr;
   grid-template-rows: 180px;
   justify-items: center;
+
+  padding-bottom: 5rem;
 `;
 export const CartItems = styled.section`
   @media screen and (min-width: 768px) {

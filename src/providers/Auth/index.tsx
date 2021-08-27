@@ -12,8 +12,8 @@ interface IAuthProviderProps {
 interface IAuthProviderData {
   token: string;
   auth: boolean;
-  submitLogin: (data: ILogin, history: History) => void;
-  submitSignup: (data: ISignup) => void;
+  handleLogin: (data: ILogin, history: History) => void;
+  handleSignup: (data: ISignup, history: History) => void;
   handleLogout: () => void;
 }
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   }, [token]);
 
-  const submitLogin = (data: ILogin, history: History) => {
+  const handleLogin = (data: ILogin, history: History) => {
     api
       .post("/login", data)
       .then((resp) => {
@@ -45,11 +45,12 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       .catch(() => toast.error("email ou senha incorreto! 😕😕"));
   };
 
-  const submitSignup = (data: ISignup) => {
+  const handleSignup = (data: ISignup, history: History) => {
     api
       .post("/register", data)
       .then(() => {
         toast.success("Cadastro realizado com sucesso 🥳🥳");
+        return history.push("/login");
       })
       .catch(() => toast.error("Erro ao cadastrar 😥😥"));
   };
@@ -61,7 +62,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ auth, token, submitSignup, submitLogin, handleLogout }}
+      value={{ auth, token, handleSignup, handleLogin, handleLogout }}
     >
       {children}
     </AuthContext.Provider>

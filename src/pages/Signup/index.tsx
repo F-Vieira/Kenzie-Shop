@@ -3,6 +3,7 @@ import FormSignup from "../../components/FormSignup";
 import { useAuth } from "../../providers/Auth";
 import { Image, SignupContainer } from "./styles";
 import SignupImage from "../../assets/img_signup.svg";
+import MotionAnimation from "../../components/MotionAnimation";
 
 const Signup = () => {
   const { auth } = useAuth();
@@ -12,10 +13,12 @@ const Signup = () => {
   }
 
   return (
-    <SignupContainer>
-      <FormSignup />
-      <Image src={SignupImage} alt="Signup_Image" />
-    </SignupContainer>
+    <MotionAnimation>
+      <SignupContainer>
+        <FormSignup />
+        <Image src={SignupImage} alt="Signup_Image" />
+      </SignupContainer>
+    </MotionAnimation>
   );
 };
 

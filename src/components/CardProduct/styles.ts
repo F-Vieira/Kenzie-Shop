@@ -19,6 +19,14 @@ export const CardProductContainer = styled.div<ICardProductStyledProps>`
 
   margin: 20px 10px;
 
+  transition-duration: 0.5s;
+  transform-origin: 0% 0%;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s linear;
+  }
+
   .product-name {
     min-height: 40px;
     max-height: 40px;

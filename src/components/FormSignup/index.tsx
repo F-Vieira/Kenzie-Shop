@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../Button";
 import Input from "../Input";
 import { FormSignupContainer } from "./styles";
@@ -30,7 +30,13 @@ const FormSignup = () => {
     resolver: yupResolver(schema),
   });
 
-  const { submitSignup } = useAuth();
+  const history = useHistory();
+
+  const { handleSignup } = useAuth();
+
+  const submitSignup = (data: ISignup) => {
+    handleSignup(data, history);
+  };
 
   return (
     <FormSignupContainer onSubmit={handleSubmit(submitSignup)}>
