@@ -8,7 +8,6 @@ import {
 import { toast } from "react-toastify";
 
 import api from "../../services/api";
-
 import { IProduct } from "../../types/products";
 
 interface IProductsProviderProps {
@@ -38,7 +37,7 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
     api
       .get("/products")
       .then((resp) => setProducts(resp.data))
-      .catch(() => console.log("Algo de errado não está certo =("));
+      .catch(() => toast.error("Erro de Conexão"));
   }, []);
 
   const addToCart = (product: IProduct) => {

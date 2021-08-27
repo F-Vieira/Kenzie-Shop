@@ -1,13 +1,15 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { Link, useHistory } from "react-router-dom";
+
 import Button from "../Button";
 import Input from "../Input";
-import { FormSignupContainer } from "./styles";
+
 import { useAuth } from "../../providers/Auth";
 import { ISignup } from "../../types/signup";
+
+import { FormSignupContainer } from "./styles";
 
 const FormSignup = () => {
   const schema = yup.object().shape({

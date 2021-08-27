@@ -2,10 +2,12 @@ import { useState } from "react";
 import { BsInfoCircle, BsPlusCircle, BsTrashFill } from "react-icons/bs";
 
 import Button from "../Button";
+
 import { IProduct } from "../../types/products";
+import { useProducts } from "../../providers/Products";
+import formatValue from "../../utils/formatValue";
 
 import { CardProductContainer, ProductImage } from "./styles";
-import { useProducts } from "../../providers/Products";
 
 interface ICardProps {
   product: IProduct;
@@ -17,6 +19,8 @@ const CardProduct = ({ product, inCart = false }: ICardProps) => {
   const { addToCart, removeFromCart } = useProducts();
 
   const [showDescription, setShowDescription] = useState<boolean>(false);
+
+  const formatedPrice = formatValue(price);
 
   return (
     <CardProductContainer show={showDescription}>
@@ -31,7 +35,7 @@ const CardProduct = ({ product, inCart = false }: ICardProps) => {
         <span>{description}</span>
       </p>
 
-      <p className="product-price">{price}</p>
+      <p className="product-price">{formatedPrice}</p>
 
       {inCart ? (
         <Button type="button" onClick={() => removeFromCart(product)}>

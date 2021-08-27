@@ -1,9 +1,12 @@
 import { Redirect } from "react-router-dom";
+
 import FormLogin from "../../components/FormLogin";
-import { useAuth } from "../../providers/Auth";
-import { Image, LoginContainer } from "./styles";
-import LoginImage from "../../assets/img_login.svg";
 import MotionAnimation from "../../components/MotionAnimation";
+
+import { useAuth } from "../../providers/Auth";
+import LoginImage from "../../assets/img_login.svg";
+
+import { Image, LoginContainer } from "./styles";
 
 const Login = () => {
   const { auth } = useAuth();

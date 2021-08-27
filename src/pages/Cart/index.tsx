@@ -1,19 +1,25 @@
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { MdRemoveShoppingCart } from "react-icons/md";
+
 import Button from "../../components/Button";
 import CardProduct from "../../components/CardProduct";
+import MotionAnimation from "../../components/MotionAnimation";
+
 import { useAuth } from "../../providers/Auth";
 import { useProducts } from "../../providers/Products";
+import formatValue from "../../utils/formatValue";
+
 import { CartContainer, CartEmpty, CartItems, TotalItems } from "./styles";
-import { MdRemoveShoppingCart } from "react-icons/md";
-import MotionAnimation from "../../components/MotionAnimation";
 
 const Cart = () => {
   const { cart, finishCart } = useProducts();
   const { auth } = useAuth();
   const history = useHistory();
 
-  const totalValue = cart.reduce((acc, product) => product.price + acc, 0);
+  const totalValue = formatValue(
+    cart.reduce((acc, product) => product.price + acc, 0)
+  );
 
   const handleBuy = () => {
     if (!auth && cart.length > 0) {

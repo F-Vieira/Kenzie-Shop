@@ -1,10 +1,12 @@
 import React from "react";
-import Header from "./components/Header";
-import Routes from "./routes";
-import GlogalStyle from "./styles/global";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, Zoom } from "react-toastify";
+
+import Header from "./components/Header";
+import Routes from "./routes";
 import ScrollButton from "./components/ScrollButton";
+
+import GlogalStyle from "./styles/global";
 
 const App = () => {
   return (

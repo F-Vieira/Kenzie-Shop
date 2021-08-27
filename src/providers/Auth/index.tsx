@@ -1,10 +1,16 @@
-import { createContext, useState, useContext, ReactNode } from "react";
+import {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 import { toast } from "react-toastify";
+import { History } from "history";
+
 import api from "../../services/api";
 import { ILogin } from "../../types/login";
 import { ISignup } from "../../types/signup";
-import { History } from "history";
-import { useEffect } from "react";
 interface IAuthProviderProps {
   children: ReactNode;
 }

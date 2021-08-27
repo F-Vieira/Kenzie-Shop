@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ImEnter, ImCart, ImExit } from "react-icons/im";
-import { HeaderContainer, Navigator } from "./styles";
+
 import { useAuth } from "../../providers/Auth";
 import { useProducts } from "../../providers/Products";
-import { useState } from "react";
-import { useEffect } from "react";
+
+import { HeaderContainer, Navigator } from "./styles";
 
 const Header = () => {
   const { auth, handleLogout } = useAuth();
@@ -13,10 +14,9 @@ const Header = () => {
   const [amountInCart, setAmountInCart] = useState<number>(cart.length);
 
   useEffect(() => {
-    setAmountInCart(cart.length);
+    setAmountInCart(cart.length); //!tentativa de atualizar o item no carrinho dinamicamente
   }, [cart]);
 
-  console.log(amountInCart);
   return (
     <HeaderContainer>
       <h1 className="header_logo">

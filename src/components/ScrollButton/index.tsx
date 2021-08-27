@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { ScrollButtonContainer } from "./styles";
 import { IoArrowUpCircle } from "react-icons/io5";
+
+import { ScrollButtonContainer } from "./styles";
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState<boolean>(false);
