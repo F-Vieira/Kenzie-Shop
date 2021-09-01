@@ -5,10 +5,13 @@ interface ICardProductStyledProps {
 }
 
 export const CardProductContainer = styled.div<ICardProductStyledProps>`
-  width: 250px;
+  width: 200px;
+  height: 455px;
   max-width: 250px;
-  max-height: 615px;
+  max-height: 455px;
+
   border-radius: 30px;
+
   border: 4px groove var(--light-blue);
   background-color: #fff;
   color: var(--dark-blue);
@@ -23,13 +26,12 @@ export const CardProductContainer = styled.div<ICardProductStyledProps>`
   transform-origin: 0% 0%;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
     transition: transform 0.3s linear;
   }
 
   .product-name {
-    min-height: 40px;
-    max-height: 40px;
+    height: 40px;
   }
 
   .product-description {
@@ -77,5 +79,5 @@ export const CardProductContainer = styled.div<ICardProductStyledProps>`
 `;
 
 export const ProductImage = styled.img`
-  width: 200px;
+  width: 120px;
 `;
